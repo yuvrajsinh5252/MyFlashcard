@@ -1,0 +1,4 @@
+.env
+bun.lockb
+.vite
+node_modules
