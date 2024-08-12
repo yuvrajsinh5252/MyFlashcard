@@ -1,0 +1,22 @@
+{
+  "name": "Backend",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.1.0",
+    "@types/pg": "^8.11.6",
+    "@types/uuid": "^10.0.0",
+    "cors": "^2.8.5",
+    "elysia": "latest",
+    "install": "^0.13.0",
+    "pg": "^8.12.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}
