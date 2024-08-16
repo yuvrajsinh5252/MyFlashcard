@@ -10,49 +10,52 @@ export default function Navbar() {
   return (
     <nav>
       <div className="flex dark:bg-gray-900 shadow-md bg-white justify-around items-center p-1">
-        <div>
+        <div className="flex gap-2">
+          <img src="src/assets/icon.png" className="h-8 w-8" alt="icon" />
           <div className="text-xl font-semibold">MyFlashcard</div>
         </div>
-        <div className="flex p-1 items-center justify-center gap-3 w-64">
-          <div className="flex gap-4">
+        <div className="flex p-1 items-center divide-x-2 justify-center gap-3 w-64">
+          <div className="flex gap-4 pr-2">
             <div>Home</div>
             <div>About</div>
           </div>
-          <ModeToggle />
-          {
-            user ? (
-              <div className="flex gap-4">
-                <div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                      <img
-                        src={user.picture!}
-                        alt="profile"
-                        className="h-8 w-8 rounded-full"
-                      />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <div onClick={() => logout()} className="cursor-pointer">logout</div>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+          <div className="flex px-2 gap-2 justify-center items-center">
+            <ModeToggle />
+            {
+              user ? (
+                <div className="flex gap-4">
+                  <div>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger>
+                        <img
+                          src={user.picture!}
+                          alt="profile"
+                          className="h-10 w-10 rounded-full"
+                        />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <div onClick={() => logout()} className="cursor-pointer">logout</div>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div>
-                {
-                  isLoading ? (
-                    <div>Loading...</div>
-                  ) : (
-                    <Button onClick={() => login()} type="button">Log In</Button>
-                  )
-                }
-              </div>
-            )
-          }
+              ) : (
+                <div>
+                  {
+                    isLoading ? (
+                      <div>Loading...</div>
+                    ) : (
+                      <Button onClick={() => login()} type="button">Log In</Button>
+                    )
+                  }
+                </div>
+              )
+            }
+          </div>
         </div>
       </div>
     </nav >

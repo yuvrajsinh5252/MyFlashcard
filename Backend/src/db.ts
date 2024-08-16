@@ -2,8 +2,7 @@ import { Pool } from "pg";
 import { v4 as uuidv4 } from "uuid";
 
 const pool = new Pool({
-  connectionString:
-    "postgresql://Flash_owner:WinvC8q4HATR@ep-wispy-frog-a5xufaow-pooler.us-east-2.aws.neon.tech/Flash?sslmode=require",
+  connectionString: process.env.DATABASE_URL,
 });
 
 export async function CreateUser(id: number, name: string) {

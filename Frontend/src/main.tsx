@@ -31,10 +31,10 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <KindeProvider
-        clientId="37aee5993a8645db86f5d170d295fe40"
-        domain="https://taskflash.kinde.com"
-        redirectUri="https://swe-internship-take-uforward.vercel.app/root"
-        logoutUri="https://swe-internship-take-uforward.vercel.app/"
+        clientId={import.meta.env.VITE_KINDE_CLIENT_ID as string}
+        domain={import.meta.env.VITE_KINDE_DOMAIN as string}
+        redirectUri={import.meta.env.VITE_KINDE_REDIRECT_URL as string}
+        logoutUri={import.meta.env.VITE_KINDE_LOGOUT_URI as string}
       >
         <Navbar />
         <RouterProvider router={router} />
