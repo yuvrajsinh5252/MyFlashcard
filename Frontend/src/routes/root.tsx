@@ -12,7 +12,7 @@ import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import GetCards from "@/components/Getcards";
 
 
-function Root() {
+export default function Root() {
   const { isLoading } = useAuth();
   const { user, isLoading: l } = useKindeAuth();
   if (isLoading || l) return <div>Loading...</div>;
@@ -54,5 +54,3 @@ function Root() {
     </div>
   )
 }
-
-export default Root

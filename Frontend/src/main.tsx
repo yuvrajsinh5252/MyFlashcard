@@ -8,7 +8,7 @@ import './index.css'
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { KindeProvider } from "@kinde-oss/kinde-auth-react";
 import Navbar from "@/components/navbar"
-import Root from './routes/roots';
+import Root from './routes/root';
 import Card from './routes/card';
 import Home from './routes/home';
 
