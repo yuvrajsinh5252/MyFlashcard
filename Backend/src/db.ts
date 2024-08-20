@@ -66,3 +66,12 @@ export async function GetCard(id: string) {
   client.release();
   return result.rows;
 }
+
+export async function DeleteCard(id: string) {
+  const client = await pool.connect();
+
+  const query = "DELETE FROM groupcards WHERE groupid = $1";
+  await client.query(query, [id]);
+
+  client.release();
+}

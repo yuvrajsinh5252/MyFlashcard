@@ -1,6 +1,12 @@
 import { Elysia } from "elysia";
 import cors from "@elysiajs/cors";
-import { CreateCard, CreateUser, GetCard, GetCardGroup } from "./db";
+import {
+  CreateCard,
+  CreateUser,
+  DeleteCard,
+  GetCard,
+  GetCardGroup,
+} from "./db";
 
 const app = new Elysia()
   .use(cors())
@@ -26,6 +32,11 @@ const app = new Elysia()
     const { id } = req.params;
     const card = await GetCard(id);
     return card;
+  })
+  .delete("/deletecard/:id", async (req: any) => {
+    const { id } = req.params;
+    await DeleteCard(id);
+    return "Card deleted!";
   })
   .listen(3000);
 
