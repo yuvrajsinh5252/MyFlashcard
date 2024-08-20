@@ -1,5 +1,6 @@
 import { Edit, Trash2Icon } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "@tanstack/react-router";
 
 export default function CardGroup(
   name: any,
@@ -14,11 +15,11 @@ export default function CardGroup(
         </div>
       </div>
       <div className="flex gap-2 w-full justify-center items-center">
-        <Button className="font-bold"
-          onClick={() => {
-            window.location.href = `/root/card/${name.id}`;
-          }}
-        >View</Button>
+        <Button className="font-bold">
+          <Link
+            to={`/dashboard/${name.id}`}
+          >View</Link>
+        </Button>
         <Button>
           <Edit />
         </Button>

@@ -1,19 +1,17 @@
+import { createFileRoute } from '@tanstack/react-router'
 import getFlashcards from "@/hooks/getFlashcards";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
-export default function Flashcard() {
-  const location = useLocation();
+export const Route = createFileRoute('/dashboard/$cardId')({
+  component: Flashcard
+})
+
+function Flashcard() {
+  const { cardId } = Route.useParams()
   const [step, setStep] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
-  const [id, setId] = useState("");
 
-  useEffect(() => {
-    const id = location.pathname.split("/").pop();
-    setId(id!);
-  }, [location.pathname]);
-
-  const { flashcards = [], isLoading }: { flashcards: any[], isLoading: boolean } = getFlashcards(id) as { flashcards: any[], isLoading: boolean };
+  const { flashcards = [], isLoading }: { flashcards: any[], isLoading: boolean } = getFlashcards(cardId) as { flashcards: any[], isLoading: boolean };
   if (isLoading) return <div>Loading...</div>;
 
   return (

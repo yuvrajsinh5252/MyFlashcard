@@ -2,6 +2,7 @@ import { ModeToggle } from "./theme/mode-toggle";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { Link } from "@tanstack/react-router";
 
 export default function Navbar() {
   const { login, logout } = useKindeAuth();
@@ -16,9 +17,8 @@ export default function Navbar() {
         </div>
         <div className="flex p-1 items-center divide-x-2 justify-center gap-3 w-96">
           <div className="flex gap-4 pr-2">
-            <a href="/root">Dashboard</a>
-            <a href="/">Home</a>
-            <a href="/">About</a>
+            <Link to="/dashboard" >Dashboard</Link>
+            <Link to="/">Home</Link>
           </div>
           <div className="flex px-2 gap-2 justify-center items-center">
             <ModeToggle />

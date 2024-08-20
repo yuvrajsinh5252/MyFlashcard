@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { buttonVariants } from "@/components/ui/button"
 import { useAuth } from "@/hooks/dbhooks";
 import {
@@ -12,8 +13,11 @@ import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import GetCards from "@/components/Getcards";
 import { DialogDescription } from "@radix-ui/react-dialog";
 
+export const Route = createFileRoute('/dashboard/')({
+  component: dashboard,
+})
 
-export default function Root() {
+function dashboard() {
   const { isLoading } = useAuth();
   const { user, isLoading: l } = useKindeAuth();
   if (isLoading || l) return <div>Loading...</div>;

@@ -26,19 +26,18 @@ export default function AddCard(user: any) {
     formData.append("questions", JSON.stringify(questionArray));
     formData.append("answers", JSON.stringify(answerArray));
 
-    console.log(Object.fromEntries(formData));
     const formDataObject = Object.fromEntries(formData);
     console.log(formDataObject);
 
-
-
-    await fetch("https://backend-gi70.onrender.com/createcard", {
+    await fetch("https://myflashcard.onrender.com/createcard", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formDataObject),
     });
+
+    window.location.reload();
   };
 
   return (
