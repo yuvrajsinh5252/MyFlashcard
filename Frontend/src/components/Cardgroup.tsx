@@ -24,7 +24,7 @@ export default function CardGroup(
         </Button>
         <Button variant={"destructive"} onClick={async () => {
           await fetch(
-            `http://localhost:3000/deletecard/${name.id}`,
+            `https://myflashcard.onrender.com/deletecard/${name.id}`,
             {
               method: "DELETE",
               headers: {
