@@ -5,7 +5,7 @@ export default function getFlashcards(groupId: any) {
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchFlashcards() {
-    fetch(`https://backend-gi70.onrender.com/fetchcard/${groupId}`, {
+    fetch(`https://myflashcard.onrender.com/fetchcard/${groupId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -22,8 +22,17 @@ export default function CardGroup(
         <Button>
           <Edit />
         </Button>
-        <Button variant={"destructive"} onClick={() => {
-          console.log("Delete");
+        <Button variant={"destructive"} onClick={async () => {
+          await fetch(
+            `http://localhost:3000/deletecard/${name.id}`,
+            {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          window.location.reload();
         }}>
           <Trash2Icon />
         </Button>

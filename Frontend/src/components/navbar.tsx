@@ -11,13 +11,14 @@ export default function Navbar() {
     <nav>
       <div className="flex dark:bg-gray-900 shadow-md bg-white justify-around items-center p-1">
         <div className="flex gap-2">
-          <img src="src/assets/icon.png" className="h-8 w-8" alt="icon" />
+          <img src="/icon.png" className="h-8 w-8" alt="icon" />
           <div className="text-xl font-semibold">MyFlashcard</div>
         </div>
-        <div className="flex p-1 items-center divide-x-2 justify-center gap-3 w-64">
+        <div className="flex p-1 items-center divide-x-2 justify-center gap-3 w-96">
           <div className="flex gap-4 pr-2">
-            <div>Home</div>
-            <div>About</div>
+            <a href="/root">Dashboard</a>
+            <a href="/">Home</a>
+            <a href="/">About</a>
           </div>
           <div className="flex px-2 gap-2 justify-center items-center">
             <ModeToggle />

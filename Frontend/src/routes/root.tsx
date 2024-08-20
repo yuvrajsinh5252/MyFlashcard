@@ -10,6 +10,7 @@ import {
 import AddCard from "@/components/AddCard";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import GetCards from "@/components/Getcards";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 
 export default function Root() {
@@ -39,7 +40,10 @@ export default function Root() {
             </DialogTrigger>
             <DialogContent className="w-[1000px] ">
               <DialogHeader>
-                <DialogTitle>Card</DialogTitle>
+                <DialogTitle>Create Card</DialogTitle>
+                <DialogDescription>
+                  Add a new card to your collection
+                </DialogDescription>
               </DialogHeader>
               {
                 user ? <AddCard user={user} /> : <></>
