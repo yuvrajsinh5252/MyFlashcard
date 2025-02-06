@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export function useAuth() {
-  const { user, isLoading } = useKindeAuth();
+  const { user, isLoading } = useAuth0();
 
   async function createUser() {
     if (!user || isLoading) return;

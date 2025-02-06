@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: () => (
     <div>
       <div className="flex flex-col items-center justify-center h-screen">
@@ -8,5 +8,5 @@ export const Route = createFileRoute('/')({
         <div className="text-2xl">A flashcard app for everyone</div>
       </div>
     </div>
-  )
-})
+  ),
+});

@@ -1,39 +1,35 @@
-import './index.css'
-import { ThemeProvider } from "@/components/theme/theme-provider"
-import { KindeProvider } from "@kinde-oss/kinde-auth-react";
+import "./index.css";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { Auth0Provider } from "@auth0/auth0-react";
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
 
-import { StrictMode } from 'react'
-import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
-
-// Import the generated route tree
-import { routeTree } from './routeTree.gen'
-
-// Create a new router instance
-const router = createRouter({ routeTree })
-
-// Register the router instance for type safety
-declare module '@tanstack/react-router' {
+import { routeTree } from "./routeTree.gen";
+const router = createRouter({ routeTree });
+declare module "@tanstack/react-router" {
   interface Register {
-    router: typeof router
+    router: typeof router;
   }
 }
 
-const rootElement = document.getElementById('root')!
+const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement)
+  const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <KindeProvider
-          clientId={import.meta.env.VITE_KINDE_CLIENT_ID as string}
-          domain={import.meta.env.VITE_KINDE_DOMAIN as string}
-          redirectUri={import.meta.env.VITE_KINDE_REDIRECT_URL as string}
-          logoutUri={import.meta.env.VITE_KINDE_LOGOUT_URI as string}
+        <Auth0Provider
+          domain={import.meta.env.VITE_AUTH0_DOMAIN}
+          clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+          authorizationParams={{
+            redirect_uri: window.location.origin,
+          }}
         >
           <RouterProvider router={router} />
-        </KindeProvider>
+        </Auth0Provider>
+        ,
       </ThemeProvider>
-    </StrictMode>,
-  )
+    </StrictMode>
+  );
 }

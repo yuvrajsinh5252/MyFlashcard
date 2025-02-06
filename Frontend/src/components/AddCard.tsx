@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 export default function AddCard(user: any) {
   const [items, setItems] = useState<number>(0);
@@ -10,7 +11,10 @@ export default function AddCard(user: any) {
     const formData = new FormData();
 
     formData.append("userId", user.user.id);
-    formData.append("name", (form["name"] as unknown as HTMLInputElement).value);
+    formData.append(
+      "name",
+      (form["name"] as unknown as HTMLInputElement).value
+    );
     formData.append("items", items.toString());
     const questionArray = [];
     const answerArray = [];
@@ -41,36 +45,71 @@ export default function AddCard(user: any) {
   };
 
   return (
-    <div className="w-full">
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-4">
-          <div className="flex w-full gap-4 items-center justify-center">
-            <div className="w-80">
-              <label htmlFor="name">Card name</label>
-              <Input type="text" id="name" />
-            </div>
-            <div className="w-80">
-              <label htmlFor="times">Items</label>
-              <Input
-                type="number"
-                id="times"
-                value={items}
-                onChange={(e) => setItems(Number(e.target.value) < 11 ? Number(e.target.value) : 10)}
-              />
-            </div>
+    <div className="w-full max-h-[70vh] overflow-y-auto px-2">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label htmlFor="name" className="text-sm font-medium">
+              Card Set Name
+            </label>
+            <Input type="text" id="name" placeholder="Enter card set name" />
           </div>
+          <div className="space-y-2">
+            <label htmlFor="times" className="text-sm font-medium">
+              Number of Cards (max 10)
+            </label>
+            <Input
+              type="number"
+              id="times"
+              value={items}
+              min="0"
+              max="10"
+              onChange={(e) =>
+                setItems(Math.min(10, Math.max(0, Number(e.target.value))))
+              }
+            />
+          </div>
+        </div>
+
+        <div className="space-y-4">
           {Array.from({ length: items }).map((_, index) => (
-            <div key={index} className="flex gap-2 justify-center items-center">
-              <label className="w-32" htmlFor={`question-${index}`}>Que {index + 1}</label>
-              <Input type="text" id={`question-${index}`} />
-              <label className="w-32" htmlFor={`answer-${index}`}>Ans {index + 1}</label>
-              <Input type="text" id={`answer-${index}`} />
+            <div
+              key={index}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-muted/40 rounded-lg"
+            >
+              <div className="space-y-2">
+                <label
+                  className="text-sm font-medium"
+                  htmlFor={`question-${index}`}
+                >
+                  Question {index + 1}
+                </label>
+                <Input
+                  type="text"
+                  id={`question-${index}`}
+                  placeholder="Enter question"
+                />
+              </div>
+              <div className="space-y-2">
+                <label
+                  className="text-sm font-medium"
+                  htmlFor={`answer-${index}`}
+                >
+                  Answer {index + 1}
+                </label>
+                <Input
+                  type="text"
+                  id={`answer-${index}`}
+                  placeholder="Enter answer"
+                />
+              </div>
             </div>
           ))}
-          <button type="submit" className="p-2 bg-blue-500 text-white rounded-md">
-            Submit
-          </button>
         </div>
+
+        <Button type="submit" className="w-full">
+          Create Flashcard Set
+        </Button>
       </form>
     </div>
   );
