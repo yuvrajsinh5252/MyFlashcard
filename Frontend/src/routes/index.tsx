@@ -22,6 +22,10 @@ function Index() {
             Create, study, and track your progress with a simple and effective
             flashcard system.
           </p>
+          <p className="text-sm text-yellow-600 dark:text-yellow-500 max-w-xl mx-auto">
+            ⚠️ Note: Initial response times may be slower as our backend is
+            hosted on a free platform.
+          </p>
           <Button
             size="lg"
             onClick={() =>

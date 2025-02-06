@@ -8,9 +8,19 @@ import {
   GetCardGroup,
 } from "./db";
 
+// Setup Bun's logger
+const logger = new Bun.ArrayBufferSink();
+process.stdout.write = (str) => {
+  logger.write(str as any);
+  return true;
+};
+
 const app = new Elysia()
   .use(cors())
-  .get("/", () => "Hello Elysia")
+  .get("/", () => {
+    console.log("Root endpoint called");
+    return "Hello Elysia";
+  })
   .post("/createuser", async (req: any) => {
     const { id, name } = req.body;
     await CreateUser(id, name);

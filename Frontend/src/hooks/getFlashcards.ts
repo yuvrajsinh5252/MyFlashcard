@@ -1,3 +1,4 @@
+import { SERVER_URL } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export default function getFlashcards(groupId: any) {
@@ -5,7 +6,7 @@ export default function getFlashcards(groupId: any) {
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchFlashcards() {
-    fetch(`http://localhost:3000/fetchcard/${groupId}`, {
+    fetch(`${SERVER_URL}/fetchcard/${groupId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

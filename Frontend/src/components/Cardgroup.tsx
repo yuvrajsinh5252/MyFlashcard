@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
+import { SERVER_URL } from "@/lib/utils";
 
 export default function CardGroup(name: any) {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -16,7 +17,7 @@ export default function CardGroup(name: any) {
 
     setIsDeleting(true);
     try {
-      await fetch(`http://localhost:3000/deletecard/${name.id}`, {
+      await fetch(`${SERVER_URL}/deletecard/${name.id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });

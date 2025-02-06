@@ -1,3 +1,4 @@
+import { SERVER_URL } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export function getcardGroups(user: any) {
@@ -6,7 +7,7 @@ export function getcardGroups(user: any) {
 
   async function getcardGroups() {
     const res = await fetch(
-      `http://localhost:3000/fetchcardgroup/${user.user.id}`,
+      `${SERVER_URL}/fetchcardgroup/${user.user?.sub?.split("|")[1]}`,
       {
         method: "POST",
         headers: {

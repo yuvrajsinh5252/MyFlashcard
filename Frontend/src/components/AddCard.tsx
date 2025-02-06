@@ -3,6 +3,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { SERVER_URL } from "@/lib/utils";
 
 export default function AddCard(user: any) {
   const [items, setItems] = useState<number>(0);
@@ -50,7 +51,7 @@ export default function AddCard(user: any) {
 
     setIsSubmitting(true);
     try {
-      formData.append("userId", user.user.id);
+      formData.append("userId", user.user?.sub?.split("|")[1]);
       formData.append("items", items.toString());
       const questionArray = [];
       const answerArray = [];
@@ -67,7 +68,7 @@ export default function AddCard(user: any) {
 
       const formDataObject = Object.fromEntries(formData);
 
-      await fetch("http://localhost:3000/createcard", {
+      await fetch(`${SERVER_URL}/createcard`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
