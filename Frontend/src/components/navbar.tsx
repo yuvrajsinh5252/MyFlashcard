@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
+} from "./ui/dropdown-menu";
 import { Link } from "@tanstack/react-router";
 import { Menu, LogOut } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="flex gap-3 mr-6 items-center">
+        <div className="flex gap-3 items-center">
           <img
             src="/icon.png"
             className="h-8 w-8 hover:scale-110 transition-transform"
@@ -33,24 +33,24 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex flex-1 items-center justify-between">
-          <div className="flex gap-8">
-            <Link
-              to="/dashboard"
-              className="text-sm font-medium transition-colors hover:text-primary relative group"
-            >
-              Dashboard
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform" />
-            </Link>
-            <Link
-              to="/"
-              className="text-sm font-medium transition-colors hover:text-primary relative group"
-            >
-              Home
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform" />
-            </Link>
-          </div>
+        <div className="hidden md:flex flex-1 items-center justify-end">
           <div className="flex items-center gap-6">
+            <div className="flex gap-8 mr-6">
+              <Link
+                to="/dashboard"
+                className="text-sm font-medium transition-colors hover:text-primary relative group"
+              >
+                Dashboard
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform" />
+              </Link>
+              <Link
+                to="/"
+                className="text-sm font-medium transition-colors hover:text-primary relative group"
+              >
+                Home
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform" />
+              </Link>
+            </div>
             <ModeToggle />
             {isLoading ? (
               <Skeleton className="h-10 w-10 rounded-full" />

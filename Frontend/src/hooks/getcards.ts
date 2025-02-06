@@ -6,7 +6,7 @@ export function getcardGroups(user: any) {
 
   async function getcardGroups() {
     const res = await fetch(
-      `https://myflashcard.onrender.com/fetchcardgroup/${user.user.id}`,
+      `http://localhost:3000/fetchcardgroup/${user.user.id}`,
       {
         method: "POST",
         headers: {

@@ -5,7 +5,7 @@ export default function getFlashcards(groupId: any) {
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchFlashcards() {
-    fetch(`https://myflashcard.onrender.com/fetchcard/${groupId}`, {
+    fetch(`http://localhost:3000/fetchcard/${groupId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,8 +21,6 @@ export default function getFlashcards(groupId: any) {
   useEffect(() => {
     fetchFlashcards();
   }, [groupId]);
-
-  console.log(flashcards);
 
   return { flashcards, isLoading };
 }

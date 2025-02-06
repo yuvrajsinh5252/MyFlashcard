@@ -6,6 +6,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 
 import { routeTree } from "./routeTree.gen";
+import { TooltipProvider } from "./components/ui/tooltip";
 const router = createRouter({ routeTree });
 declare module "@tanstack/react-router" {
   interface Register {
@@ -19,15 +20,17 @@ if (!rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Auth0Provider
-          domain={import.meta.env.VITE_AUTH0_DOMAIN}
-          clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
-          authorizationParams={{
-            redirect_uri: window.location.origin,
-          }}
-        >
-          <RouterProvider router={router} />
-        </Auth0Provider>
+        <TooltipProvider>
+          <Auth0Provider
+            domain={import.meta.env.VITE_AUTH0_DOMAIN}
+            clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+            authorizationParams={{
+              redirect_uri: window.location.origin,
+            }}
+          >
+            <RouterProvider router={router} />
+          </Auth0Provider>
+        </TooltipProvider>
         ,
       </ThemeProvider>
     </StrictMode>

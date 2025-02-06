@@ -6,7 +6,7 @@ export function useAuth() {
 
   async function createUser() {
     if (!user || isLoading) return;
-    await fetch("https://myflashcard.onrender.com/createuser", {
+    await fetch("http://localhost:3000/createuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
